@@ -7,29 +7,14 @@
   <body>
     <h1>Image Resizer</h1>
     <form>
-        <input type="file" id="image-file" accept="image/*" onchange="displayImage()"/>
+      <button type="button" id="file-button" onclick="document.getElementById('image-file').click()">Choose Image</button>
+      <input type="file" id="image-file" accept="image/*" onchange="displayImage()" style="display:none"/>      
     </form>
     <br />
     <img id="displayed-image" src="" alt="Displayed Image" style="display:none;"/>
     <br />
     <input type="number" id="resize-value" placeholder="Enter new size in pixels" />
-    <button onClick="resizeImage()">Resize</button>
-    <script>
-    function displayImage() {
-    var image = document.getElementById("image-file").files[0];
-    var validImageTypes = ["image/jpeg", "image/png", "image/jpg"];
-    if (validImageTypes.indexOf(image.type) < 0) {
-        alert('Invalid file type. Only jpeg and png images are supported.');
-        return;
-    }
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        var img = document.getElementById("displayed-image");
-        img.src = e.target.result;
-        img.style.display = "block";
-    }
-    reader.readAsDataURL(image);
-    }
-    </script>
+    <button onClick="resizeImage()" id="resize">Resize</button>
+    <script src="script.js"></script>
   </body>
 </html>
